@@ -3,7 +3,7 @@ var cors = require('cors')
 const http = require('http');
 const socket = require('socket.io');
 
-const port = 3001
+const port = process.env.port || 8000;
 
 var app = express();
 app.use(cors())
@@ -21,5 +21,4 @@ io.on('connection', function (socket) {
     }); 
 });
 
-server.listen(port);
-console.log('listening on port 3001');
+app.listen(port, () => { console.log('Our App Is Up And Running!'); });
